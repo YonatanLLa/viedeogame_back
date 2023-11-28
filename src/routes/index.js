@@ -7,6 +7,7 @@ const express = require("express");
 
 const gamesRouter = require("./routerGames");
 const genresRouter = require("./routerGenres");
+const usersRouter = require("./routerUsers");
 
 const router = Router();
 router.use(morgan("dev"));
@@ -16,5 +17,6 @@ router.use(express.json());
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use("/videogames", gamesRouter);
+router.use("/login", loginRouter);
 router.use("/genres", genresRouter);
 module.exports = router;

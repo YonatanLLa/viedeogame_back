@@ -9,7 +9,7 @@ const {Videogame} = require("../db")
 const videoGames = async () => {
   const requests = [];
   
-  for (let i = 1; i < 2; i++) {
+  for (let i = 1; i < 3; i++) {
     requests.push(axios(`${URL_GAMES}&page=${i}`));
   }
   
