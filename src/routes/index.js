@@ -17,6 +17,6 @@ router.use(express.json());
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use("/videogames", gamesRouter);
-router.use("/login", loginRouter);
+router.use("/user", usersRouter);
 router.use("/genres", genresRouter);
 module.exports = router;

@@ -1,20 +1,26 @@
 const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
-  sequelize.define(
-    "favorite",
-    {
-        id: DataTypes.UUID,
-        primaryKey: true,
-        autoIncrement: true,
+  sequelize.define("favorite", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     },
-    {
-        userId: DataTypes.INTEGER,
-        allowNull: false,
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    {
-        postId: DataTypes.INTEGER,
-        allowNull: false,
-    }
-    
-  );
+    postId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+  });
 };

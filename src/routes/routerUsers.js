@@ -1,7 +1,10 @@
-const { Router } = require("express")
+const { Router } = require("express");
 
-const { handlerLogin} = require("../handlers/handlerLogin")
+const { handlerLogin, handlerRegister } = require("../handlers/handlersLogin");
 
-const loginRouter = Router()
+const usersRouter = Router();
 
-loginRouter.get
+usersRouter.post("/sing-up", handlerRegister);
+usersRouter.post("/log-in", handlerLogin);
+
+module.exports = usersRouter;
