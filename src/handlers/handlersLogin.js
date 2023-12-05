@@ -11,7 +11,7 @@ const handlerRegister = async (req, res) => {
     const newUser = await login(name, lastName, email, password);
     res.status(200).json(newUser);
   } catch (error) {
-    console.log(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
