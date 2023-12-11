@@ -1,5 +1,5 @@
 // login for controllers
-const { login } = require("../controllers/user/login");
+const { register } = require("../controllers/user/register");
 const handlerRegister = async (req, res) => {
   try {
     const { name, lastName, email, password } = req.body;
@@ -8,7 +8,7 @@ const handlerRegister = async (req, res) => {
         `Required data for register ${name || lastName || email || password}`
       );
     }
-    const newUser = await login(name, lastName, email, password);
+    const newUser = await register(name, lastName, email, password);
     res.status(200).json(newUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
