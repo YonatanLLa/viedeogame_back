@@ -16,13 +16,39 @@ const register = async (name, lastName, email, password) => {
     name: name,
     lastName: lastName,
   });
-  console.log(newUser.id, "created");
-  const token = await createAccessToken({ id: newUser.id });
-  res.cookie("token", token);
 
-  
+  return {
+    // token,
+    username: newUser.name,
+  };
+};
+
+const loginUser = async (email, password) => {
+  console.log(email, password);
+
+  try {
+    const existEmail = await User.findOne({ email });
+    if (!existEmail) {
+      throw new Error("Email now exist");
+    }
+
+    const comparePassword = await bcrypt.compare(password, existEmail.password);
+    if (!comparePassword) {
+      throw new Error("Password incorrect");
+    }
+
+    const token = await createAccessToken({ id: existEmail._id });
+
+    return {
+      token,
+      name: existEmail.name,
+    };
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
 };
 
 module.exports = {
   register,
+  loginUser,
 };
